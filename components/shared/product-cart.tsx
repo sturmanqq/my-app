@@ -43,10 +43,10 @@ export const ProductCart: React.FC<IProps> = ({
                         от <b>{price} Р</b>
                     </span>
 
-                    <Button variant="secondary"/>
-                        <Plus size={20} className="mr-"/>
+                    <Button variant="secondary">
+                        <Plus size={20} className="mr-1"/>
                         Добавить
-                    <Button/>
+                    </Button>
                 </div>
             </Link>
         </div>
