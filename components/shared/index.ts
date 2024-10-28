@@ -5,3 +5,4 @@ export { Header } from './header';
 export { SortPopup } from './sort-popup';
 export { FilterCheckbox } from './filter-checkbox';
 export { Filters} from './filters';
+export { ProductCart} from './product-cart';
