@@ -15,6 +15,7 @@ model User {
     email String @unique
     password String
     role UserRole @default(USER)
+    verified DateTime
 
     provider String?
     providerId String?
@@ -31,6 +32,9 @@ model Category {
     id Int @id @default(autoincrement())
     name String @unique
     products Product[]
+
+    createAt DateTime @default(now())
+    updateAt DateTime @updatedAt
 }
 
 model Product {
@@ -66,7 +70,7 @@ model Ingredient {
     id Int @id @default(autoincrement())
 
     name String
-    price String
+    price Int
     imageUrl String
 
     products Product[]
@@ -94,14 +98,14 @@ model Cart {
 
 model CartItem {
     id Int @id @default(autoincrement())
- 
-    cart Cart @relation(fields: [cartId], references: [id])
+
+    cart   Cart @relation(fields: [cartId], references: [id])
     cartId Int
 
-    productItem ProductItem @relation(fields: [productItemId], references: [id])
+    productItem   ProductItem @relation(fields: [productItemId], references: [id])
     productItemId Int
 
-    quabtity Int
+    quantity Int @default(1)
 
     ingredients Ingredient[]
 
