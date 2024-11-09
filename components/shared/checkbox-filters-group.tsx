@@ -14,8 +14,10 @@ interface IProps {
     loading?: boolean;
     searchInputPlaceholder?: string;
     className?: string;
-    onChange?: (values: string[]) => void;
+    onClickCheckbox?: (id: string) => void;
     defaultValue?: string[];
+    selectedIds?: Set<string>;
+    name?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<IProps> = ({
@@ -26,7 +28,9 @@ export const CheckboxFiltersGroup: React.FC<IProps> = ({
     searchInputPlaceholder = "Поиск...",
     className,
     loading,
-    // onChange,
+    onClickCheckbox,
+    selectedIds,
+    name,
     // defaultValue,
 }) => {
     const [showAll, setShowAll] = useState(false);
@@ -77,8 +81,9 @@ export const CheckboxFiltersGroup: React.FC<IProps> = ({
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
-                        checked={false}
-                        onCheckedChange={(ids) => console.log(ids)}
+                        checked={selectedIds?.has(item.value)}
+                        onCheckedChange={() => onClickCheckbox?.(item.value)}
+                        name={name}
                     />
                 ))}
             </div>

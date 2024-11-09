@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export const Filters: React.FC<IProps> = ({ classname }) => {
-    const { ingredients, loading } = useFilterIngredients();
+    const { ingredients, loading, onAddId, selectedIds } = useFilterIngredients();
 
     const items = ingredients.map((item) => ({ value: String(item.id), text: item.name }))
 
@@ -47,11 +47,14 @@ export const Filters: React.FC<IProps> = ({ classname }) => {
 
             <CheckboxFiltersGroup
                 className="mt-5"
+                name="ingredients"
                 title="Формат"
                 limit={6}
                 defaultItems={items.slice(0, 6)}
                 items={items}
                 loading={loading}
+                onClickCheckbox={onAddId}
+                selectedIds={selectedIds}
             />
         </div>
     );
