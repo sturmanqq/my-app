@@ -2,24 +2,17 @@
 
 import { cn } from "@/lib/utils";
 import { useCategoryStore } from "@/store/category";
+import { Category } from "@prisma/client";
 import React from "react";
 
 interface IProps {
+    items: Category[]
     classname?: string;
 }
 
-const cats = [
-    { id: 1, name: "Пиццы" },
-    { id: 2, name: "Комбо" },
-    { id: 3, name: "Закуски" },
-    { id: 4, name: "Коктейли" },
-    { id: 5, name: "Кофе" },
-    { id: 6, name: "Напитки" },
-    { id: 7, name: "Десерты" },
-    { id: 8, name: "Десерты" },
-];
 
-export const Categories: React.FC<IProps> = ({ classname }) => {
+
+export const Categories: React.FC<IProps> = ({ items, classname }) => {
     const categoryActiveId = useCategoryStore((state) => state.activeId);
 
     return (
@@ -29,7 +22,7 @@ export const Categories: React.FC<IProps> = ({ classname }) => {
                 classname
             )}
         >
-            {cats.map(({ id, name }, index) => (
+            {items.map(({ id, name }, index) => (
                 <a
                     href={`/#${name}`}
                     key={index}
