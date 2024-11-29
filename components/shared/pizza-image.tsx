@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 interface IProps {
     className?: string;
     imageUrl: string;
-    size: number;
+    size: 20 | 30 | 40;
 }
 
-export const ProductImage: React.FC<IProps> = ({
+export const PizzaImage: React.FC<IProps> = ({
     imageUrl,
     size,
     className,
